@@ -1,1 +1,7 @@
-package ambrosia_zeus_api
+package main
+
+import "ambrosia-zeus-api/cmd/api/router"
+
+func main() {
+	router.SetupEndpoints()
+}
