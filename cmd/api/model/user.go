@@ -16,17 +16,18 @@ type User struct {
 	Phone         string     `json:"phone" binding:"required"`
 	PersonalEmail string     `json:"personal_email" binding:"required"`
 	DoB           time.Time  `json:"date_of_birth" binding:"required"`
-	Credential    Credential `json:"credential" binding:"required" gorm:"foreignKey:UserCredential;references:ID"`
+	CredentialID  string     `json:"credential_id" gorm:"size:70"`
+	Credential    Credential `json:"credential" binding:"required" gorm:"foreignKey:CredentialID;references:ID"`
 }
 
-func NewUserFromStruct(user *RequestUser) *User {
+func NewUserFromStruct(user *RequestUser) User {
 	dateString := "02/01/2006"
-	parsedDate, err := time.Parse(user.DoB, dateString)
+	parsedDate, err := time.Parse(dateString, user.DoB)
 	if err != nil {
-		return nil
+		return User{}
 	}
 
-	newUser := &User{
+	newUser := User{
 		ID:            uuid.NewString(),
 		UserType:      user.UserType,
 		FirstName:     user.FirstName,

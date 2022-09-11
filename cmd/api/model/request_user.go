@@ -11,5 +11,5 @@ type RequestUser struct {
 	Phone         string `json:"phone" binding:"required"`
 	PersonalEmail string `json:"personal_email" binding:"required"`
 	DoB           string `json:"date_of_birth" binding:"required"`
-	Credential    string `json:"credential" binding:"required"`
+	Credential    string `json:"credential"`
 }

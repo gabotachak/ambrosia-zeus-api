@@ -2,13 +2,13 @@ package repository
 
 import (
 	"ambrosia-zeus-api/cmd/api/model"
-	"fmt"
 	"gorm.io/gorm"
 )
 
 func CreateUser(user *model.RequestUser, db *gorm.DB) (*model.User, error) {
-	result := db.Create(model.NewUserFromStruct(user))
-	fmt.Println(result)
+	userToCreate := model.NewUserFromStruct(user)
 
-	return nil, nil
+	db.Create(&userToCreate)
+
+	return &userToCreate, nil
 }

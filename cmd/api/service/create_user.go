@@ -10,3 +10,7 @@ func CreateUser(user *model.RequestUser, db *gorm.DB) (*model.User, error) {
 	createdUser, _ := repository.CreateUser(user, db)
 	return createdUser, nil
 }
+
+func GenerateUsernameFromName(firstName string, lastName string) string {
+	return ""
+}
