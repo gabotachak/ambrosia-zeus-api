@@ -21,7 +21,7 @@ type User struct {
 	Credential    Credential `json:"-" binding:"required" gorm:"foreignKey:CredentialID;references:ID"`
 }
 
-func NewUserFromStruct(user *request.RequestUser) User {
+func NewUserFromCreateStruct(user *request.RequestUser) User {
 	dateString := "02/01/2006"
 	parsedDate, err := time.Parse(dateString, user.DoB)
 	if err != nil {
@@ -40,6 +40,30 @@ func NewUserFromStruct(user *request.RequestUser) User {
 		PersonalEmail: user.PersonalEmail,
 		DoB:           parsedDate,
 		Credential:    NewCredential(user.Credential),
+	}
+	return newUser
+}
+
+func NewUserFromEditStruct(user *request.RequestUserEdit) User {
+	var parsedDate time.Time
+	var err error
+	dateString := "02/01/2006"
+	if user.DoB != "" {
+		parsedDate, err = time.Parse(dateString, user.DoB)
+		if err != nil {
+			return User{}
+		}
+	}
+
+	newUser := User{
+		UserType:      user.UserType,
+		FirstName:     user.FirstName,
+		LastName:      user.LastName,
+		DocType:       user.DocType,
+		DocNumber:     user.DocNumber,
+		Phone:         user.Phone,
+		PersonalEmail: user.PersonalEmail,
+		DoB:           parsedDate,
 	}
 	return newUser
 }

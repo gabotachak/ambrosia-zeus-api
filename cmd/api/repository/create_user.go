@@ -7,8 +7,7 @@ import (
 )
 
 func CreateUser(user *request.RequestUser, db *gorm.DB) (*storage.User, error) {
-	userToCreate := storage.NewUserFromStruct(user)
-
+	userToCreate := storage.NewUserFromCreateStruct(user)
 	db.Create(&userToCreate)
 
 	return &userToCreate, nil

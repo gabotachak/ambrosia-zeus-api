@@ -1,22 +1,37 @@
 package util
 
 import (
-	"ambrosia-zeus-api/cmd/api/model"
+	"ambrosia-zeus-api/cmd/api/model/storage"
+	"fmt"
+	mySqlDriver "github.com/go-sql-driver/mysql"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
+	"time"
 )
 
 func InitializeDatabase() *gorm.DB {
-	dsn := "root:swarch2022ii@tcp(127.0.0.1:3307)/ambrosia_zeus_db?charset=utf8mb4&parseTime=True&loc=Local"
+	c := mySqlDriver.Config{
+		User:      "root",
+		Passwd:    "swarch2022ii",
+		DBName:    "ambrosia_zeus_db",
+		Addr:      "localhost:3307",
+		Net:       "tcp",
+		ParseTime: true,
+		Loc:       time.UTC,
+	}
+
+	dsn := c.FormatDSN()
+	fmt.Println(dsn)
+
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("DB connection failed. Error: %s", err)
 		return nil
 	}
 
-	if !db.Migrator().HasTable(model.User{}) || !db.Migrator().HasTable(model.Credential{}) {
-		db.Migrator().CreateTable(model.User{}, model.Credential{})
+	if !db.Migrator().HasTable(storage.User{}) || !db.Migrator().HasTable(storage.Credential{}) {
+		db.Migrator().CreateTable(storage.User{}, storage.Credential{})
 	}
 
 	return db
