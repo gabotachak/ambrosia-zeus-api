@@ -1,7 +1,7 @@
-package model
+package request
 
 type RequestUser struct {
-	ID            string `json:"id" gorm:"primaryKey"`
+	ID            string `json:"id"`
 	UserType      string `json:"user_type" binding:"required"`
 	FirstName     string `json:"first_name" binding:"required"`
 	LastName      string `json:"last_name" binding:"required"`

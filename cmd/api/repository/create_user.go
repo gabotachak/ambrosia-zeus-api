@@ -1,12 +1,13 @@
 package repository
 
 import (
-	"ambrosia-zeus-api/cmd/api/model"
+	"ambrosia-zeus-api/cmd/api/model/request"
+	"ambrosia-zeus-api/cmd/api/model/storage"
 	"gorm.io/gorm"
 )
 
-func CreateUser(user *model.RequestUser, db *gorm.DB) (*model.User, error) {
-	userToCreate := model.NewUserFromStruct(user)
+func CreateUser(user *request.RequestUser, db *gorm.DB) (*storage.User, error) {
+	userToCreate := storage.NewUserFromStruct(user)
 
 	db.Create(&userToCreate)
 

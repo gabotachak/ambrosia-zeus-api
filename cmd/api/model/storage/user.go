@@ -1,13 +1,14 @@
-package model
+package storage
 
 import (
+	"ambrosia-zeus-api/cmd/api/model/request"
 	"github.com/google/uuid"
 	"time"
 )
 
 type User struct {
 	ID            string     `json:"id" gorm:"primaryKey"`
-	UserType      string     `json:"user_type" binding:"required"`
+	UserType      string     `json:"user_type" gorm:"primaryKey" binding:"required"`
 	FirstName     string     `json:"first_name" binding:"required"`
 	LastName      string     `json:"last_name" binding:"required"`
 	Username      string     `json:"username" binding:"required"`
@@ -20,7 +21,7 @@ type User struct {
 	Credential    Credential `json:"-" binding:"required" gorm:"foreignKey:CredentialID;references:ID"`
 }
 
-func NewUserFromStruct(user *RequestUser) User {
+func NewUserFromStruct(user *request.RequestUser) User {
 	dateString := "02/01/2006"
 	parsedDate, err := time.Parse(dateString, user.DoB)
 	if err != nil {
@@ -32,7 +33,7 @@ func NewUserFromStruct(user *RequestUser) User {
 		UserType:      user.UserType,
 		FirstName:     user.FirstName,
 		LastName:      user.LastName,
-		Username:      user.LastName,
+		Username:      user.Username,
 		DocType:       user.DocType,
 		DocNumber:     user.DocNumber,
 		Phone:         user.Phone,

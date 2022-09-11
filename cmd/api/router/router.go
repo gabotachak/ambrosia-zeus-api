@@ -14,7 +14,8 @@ func SetupEndpoints(db *gorm.DB) {
 		ctx.JSON(http.StatusOK, "pong")
 	})
 
-	router.POST("/users/create", handler.CreateUserHandler{DB: db}.CreateUser)
+	router.POST("/users/create", handler.UserHandler{DB: db}.CreateUser)
+	router.POST("/users/login", handler.UserHandler{DB: db}.LoginUser)
 
 	err := router.Run()
 	if err != nil {

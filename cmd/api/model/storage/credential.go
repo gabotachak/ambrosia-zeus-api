@@ -1,9 +1,8 @@
-package model
+package storage
 
 import (
-	"crypto/sha256"
-	"fmt"
 	"github.com/google/uuid"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type Credential struct {
@@ -23,9 +22,10 @@ func NewCredential(credential string) Credential {
 }
 
 func hashCredential(credential string) string {
-	hashFunc := sha256.New()
-	hashFunc.Write([]byte(credential))
+	hashedCredential, err := bcrypt.GenerateFromPassword([]byte(credential), bcrypt.DefaultCost)
+	if err != nil {
 
-	hashedCredential := fmt.Sprintf("%x", hashFunc.Sum(nil))
-	return hashedCredential
+	}
+
+	return string(hashedCredential)
 }
