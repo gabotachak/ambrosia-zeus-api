@@ -16,8 +16,8 @@ type User struct {
 	Phone         string     `json:"phone" binding:"required"`
 	PersonalEmail string     `json:"personal_email" binding:"required"`
 	DoB           time.Time  `json:"date_of_birth" binding:"required"`
-	CredentialID  string     `json:"credential_id" gorm:"size:70"`
-	Credential    Credential `json:"credential" binding:"required" gorm:"foreignKey:CredentialID;references:ID"`
+	CredentialID  string     `json:"-" gorm:"size:70"`
+	Credential    Credential `json:"-" binding:"required" gorm:"foreignKey:CredentialID;references:ID"`
 }
 
 func NewUserFromStruct(user *RequestUser) User {
