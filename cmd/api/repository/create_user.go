@@ -12,3 +12,14 @@ func CreateUser(user *request.RequestUser, db *gorm.DB) (*storage.User, error) {
 
 	return &userToCreate, nil
 }
+
+func CheckUsername(username string, db *gorm.DB) bool {
+	var retrievedUser *storage.User
+
+	queryResult := db.First(&retrievedUser, "Username = ?", username)
+	if queryResult.RowsAffected > 0 {
+		return true
+	}
+
+	return false
+}

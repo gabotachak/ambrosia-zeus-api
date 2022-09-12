@@ -5,7 +5,7 @@ type RequestUser struct {
 	UserType      string `json:"user_type,omitempty" binding:"required"`
 	FirstName     string `json:"first_name,omitempty" binding:"required"`
 	LastName      string `json:"last_name,omitempty" binding:"required"`
-	Username      string `json:"username,omitempty" binding:"required"`
+	Username      string `json:"username,omitempty"`
 	DocType       string `json:"doc_type,omitempty" binding:"required"`
 	DocNumber     string `json:"doc_number,omitempty" binding:"required"`
 	Phone         string `json:"phone,omitempty" binding:"required"`
