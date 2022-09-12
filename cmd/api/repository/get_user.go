@@ -11,7 +11,6 @@ func GetUser(userID string, db *gorm.DB) (*storage.User, error) {
 
 	queryResult := db.First(&retrievedUser, "ID = ?", userID)
 	if queryResult.Error != nil || queryResult.RowsAffected == 0 {
-		fmt.Println(queryResult.Error)
 		return nil, nil
 	}
 
