@@ -2,6 +2,7 @@ package handler
 
 import (
 	"ambrosia-zeus-api/cmd/api/model/request"
+	"ambrosia-zeus-api/cmd/api/model/response"
 	"ambrosia-zeus-api/cmd/api/service"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -15,15 +16,22 @@ func (handler UserHandler) LoginUser(ctx *gin.Context) {
 		fmt.Println(err)
 	}
 
-	response := service.LoginUser(reqUser, handler.DB)
+	loginErr := service.LoginUser(reqUser, handler.DB)
 
-	if response {
-		ctx.JSON(http.StatusOK, gin.H{
-			"message": "Successful login",
-		})
-	} else {
+	if loginErr != nil {
 		ctx.JSON(http.StatusUnauthorized, gin.H{
 			"message": "Unauthorized login",
+		})
+	} else {
+		loggedUser, userErr := service.GetUserByUsername(reqUser.Username, handler.DB)
+		if userErr != nil {
+			ctx.JSON(http.StatusNotFound, gin.H{
+				"message": "Error while fetching user",
+			})
+		}
+
+		ctx.JSON(http.StatusOK, response.LoginResponse{
+			UserID: loggedUser.ID,
 		})
 	}
 }

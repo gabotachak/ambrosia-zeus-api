@@ -10,6 +10,6 @@ func GetUser(userID string, db *gorm.DB) (*storage.User, error) {
 	return repository.GetUser(userID, db)
 }
 
-func GetUserByUsername(userID string, db *gorm.DB) (*storage.User, error) {
-	return repository.GetUserByUsername(userID, db)
+func GetUserByUsername(username string, db *gorm.DB) (*storage.User, error) {
+	return repository.GetUserByUsername(username, db)
 }

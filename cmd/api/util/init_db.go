@@ -2,27 +2,30 @@ package util
 
 import (
 	"ambrosia-zeus-api/cmd/api/model/storage"
-	"fmt"
 	mySqlDriver "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
+	"os"
 	"time"
 )
 
 func InitializeDatabase() *gorm.DB {
+	godotenv.Load()
+
 	c := mySqlDriver.Config{
-		User:      "root",
-		Passwd:    "swarch2022ii",
-		DBName:    "ambrosia_zeus_db",
-		Addr:      "localhost:3307",
-		Net:       "tcp",
-		ParseTime: true,
-		Loc:       time.UTC,
+		User:                 goDotEnvVariable("DB_USER"),
+		Passwd:               goDotEnvVariable("DB_PASS"),
+		DBName:               goDotEnvVariable("DB_NAME"),
+		Addr:                 goDotEnvVariable("DB_HOST"),
+		Net:                  "tcp",
+		ParseTime:            true,
+		Loc:                  time.UTC,
+		AllowNativePasswords: true,
 	}
 
 	dsn := c.FormatDSN()
-	fmt.Println(dsn)
 
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
@@ -30,9 +33,19 @@ func InitializeDatabase() *gorm.DB {
 		return nil
 	}
 
-	if !db.Migrator().HasTable(storage.User{}) || !db.Migrator().HasTable(storage.Credential{}) {
-		db.Migrator().CreateTable(storage.User{}, storage.Credential{})
-	}
+	db.Migrator().CreateTable(storage.Credential{}, storage.User{})
 
 	return db
+}
+
+func goDotEnvVariable(key string) string {
+
+	// load .env file
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
+
+	return os.Getenv(key)
 }
