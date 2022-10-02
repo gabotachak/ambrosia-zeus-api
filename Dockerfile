@@ -7,6 +7,5 @@ RUN go mod download
 RUN go build -o /ambrosia-zeus-api
 
 EXPOSE 8080
-EXPOSE 3307
 
 CMD [ "/ambrosia-zeus-api" ]
