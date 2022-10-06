@@ -2,8 +2,9 @@ package storage
 
 import (
 	"ambrosia-zeus-api/cmd/api/model/request"
-	"github.com/google/uuid"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type User struct {

@@ -2,9 +2,10 @@ package router
 
 import (
 	"ambrosia-zeus-api/cmd/api/handler"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
-	"net/http"
 )
 
 func SetupEndpoints(db *gorm.DB) {

@@ -4,9 +4,10 @@ import (
 	"ambrosia-zeus-api/cmd/api/model/request"
 	"ambrosia-zeus-api/cmd/api/model/storage"
 	"ambrosia-zeus-api/cmd/api/repository"
-	"gorm.io/gorm"
 	"strconv"
 	"strings"
+
+	"gorm.io/gorm"
 )
 
 func CreateUser(user *request.RequestUser, db *gorm.DB) (*storage.User, error) {

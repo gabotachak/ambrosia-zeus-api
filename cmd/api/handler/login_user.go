@@ -4,8 +4,9 @@ import (
 	"ambrosia-zeus-api/cmd/api/model/request"
 	"ambrosia-zeus-api/cmd/api/service"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 func (handler UserHandler) LoginUser(ctx *gin.Context) {

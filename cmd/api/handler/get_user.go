@@ -2,8 +2,9 @@ package handler
 
 import (
 	"ambrosia-zeus-api/cmd/api/service"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 func (handler UserHandler) GetUser(ctx *gin.Context) {
