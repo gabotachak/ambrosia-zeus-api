@@ -32,7 +32,9 @@ func (handler UserHandler) LoginUser(ctx *gin.Context) {
 		}
 
 		ctx.JSON(http.StatusOK, response.LoginResponse{
-			UserID: loggedUser.ID,
+			UserID:      loggedUser.ID,
+			Username:    loggedUser.Username,
+			DisplayName: fmt.Sprintf("%s %s", loggedUser.FirstName, loggedUser.LastName),
 		})
 	}
 }
