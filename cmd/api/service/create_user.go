@@ -1,11 +1,12 @@
 package service
 
 import (
-	"ambrosia-zeus-api/cmd/api/model/request"
-	"ambrosia-zeus-api/cmd/api/model/storage"
-	"ambrosia-zeus-api/cmd/api/repository"
 	"strconv"
 	"strings"
+
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/request"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/storage"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/repository"
 
 	"gorm.io/gorm"
 )

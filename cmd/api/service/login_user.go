@@ -1,11 +1,12 @@
 package service
 
 import (
-	"ambrosia-zeus-api/cmd/api/model/request"
-	"ambrosia-zeus-api/cmd/api/repository"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/request"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/repository"
+
+	"log"
 
 	"gorm.io/gorm"
-	"log"
 )
 
 func LoginUser(user *request.RequestLogin, db *gorm.DB) error {

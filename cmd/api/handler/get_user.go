@@ -1,8 +1,9 @@
 package handler
 
 import (
-	"ambrosia-zeus-api/cmd/api/service"
 	"net/http"
+
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/service"
 
 	"github.com/gin-gonic/gin"
 )

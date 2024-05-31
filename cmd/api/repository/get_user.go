@@ -1,9 +1,10 @@
 package repository
 
 import (
-	"ambrosia-zeus-api/cmd/api/model/general"
-	"ambrosia-zeus-api/cmd/api/model/storage"
 	"fmt"
+
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/general"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/storage"
 
 	"gorm.io/gorm"
 )

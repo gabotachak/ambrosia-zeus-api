@@ -1,8 +1,9 @@
 package storage
 
 import (
-	"ambrosia-zeus-api/cmd/api/model/request"
 	"time"
+
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/request"
 
 	"github.com/google/uuid"
 )

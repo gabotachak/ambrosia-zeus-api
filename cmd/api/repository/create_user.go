@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"ambrosia-zeus-api/cmd/api/model/request"
-	"ambrosia-zeus-api/cmd/api/model/storage"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/request"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/storage"
 
 	"gorm.io/gorm"
 )

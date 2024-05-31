@@ -1,14 +1,15 @@
 package util
 
 import (
-	"ambrosia-zeus-api/cmd/api/model/storage"
+	"log"
+	"os"
+	"time"
+
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/storage"
 	mySqlDriver "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"log"
-	"os"
-	"time"
 )
 
 func InitializeDatabase() *gorm.DB {

@@ -1,8 +1,9 @@
 package router
 
 import (
-	"ambrosia-zeus-api/cmd/api/handler"
 	"net/http"
+
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/handler"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

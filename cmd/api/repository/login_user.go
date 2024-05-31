@@ -1,9 +1,9 @@
 package repository
 
 import (
-	"ambrosia-zeus-api/cmd/api/model/general"
-	"ambrosia-zeus-api/cmd/api/model/request"
-	"ambrosia-zeus-api/cmd/api/model/storage"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/general"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/request"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/storage"
 
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"

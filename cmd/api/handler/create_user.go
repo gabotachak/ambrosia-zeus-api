@@ -1,10 +1,11 @@
 package handler
 
 import (
-	"ambrosia-zeus-api/cmd/api/model/request"
-	"ambrosia-zeus-api/cmd/api/service"
 	"fmt"
 	"net/http"
+
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/model/request"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/service"
 
 	"github.com/gin-gonic/gin"
 )

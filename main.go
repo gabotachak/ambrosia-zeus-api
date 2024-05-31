@@ -1,8 +1,8 @@
 package main
 
 import (
-	"ambrosia-zeus-api/cmd/api/router"
-	"ambrosia-zeus-api/cmd/api/util"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/router"
+	"github.com/gabotachak/ambrosia-zeus-api/cmd/api/util"
 )
 
 func main() {
