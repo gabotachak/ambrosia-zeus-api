@@ -24,7 +24,7 @@ func NewCredential(credential string) Credential {
 func hashCredential(credential string) string {
 	hashedCredential, err := bcrypt.GenerateFromPassword([]byte(credential), bcrypt.DefaultCost)
 	if err != nil {
-
+		fmt.Println(err)
 	}
 
 	return string(hashedCredential)
